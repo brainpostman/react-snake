@@ -45,7 +45,7 @@ export default function Snake(props) {
         document.addEventListener("keydown", handleKeyPress);
     }, [])
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         checkSnakeContact(snakeHead, snakePath);
         checkWallContact(snakeHead);
         let newState = null;
@@ -154,12 +154,20 @@ export default function Snake(props) {
         })
     }
 
+    const handleRestart = () => {
+        setStart(false);
+        setLoss(false);
+        props.gameRestart(false);
+    }
+
     return (
         <div className="snake-container">
             {!start ? <div className="menu"><p>Press start to begin</p>
                     <button onClick={handleStart}>Start</button>
                 </div> :
-                <div> { loss ? <div className="menu"><p>GAME OVER</p><p>Your score:</p><p>{score}</p></div> :
+                <div> { loss ? <div className="menu"><p>GAME OVER</p><p>Your score:</p><p>{score}</p>
+                <button onClick={handleRestart}>Try again?</button>
+                </div> :
                         <div className={"grid-container"} style={{gridTemplateColumns: `repeat(${gridWidth}, 1fr)`}}>
                             {
                                 gridState.map((itemH, indexH) => {

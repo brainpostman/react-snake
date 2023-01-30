@@ -23,7 +23,6 @@ function App() {
       return;
     }
     clearTimeout(errorRef.current);
-    setGameStart(true);
     const gridArray = [];
     for (let i = 0; i < height + 2; i++) {
       gridArray.push([]);
@@ -40,6 +39,7 @@ function App() {
     setInitialSnakePath(startObj.initialSnakePath);
     setInitialFood(startObj.initialFood);
     setInitialGrid(startObj.initialGrid);
+    setGameStart(true);
   }
 
   const handleWidthChange = (event) => {
@@ -96,7 +96,13 @@ function App() {
           <button onClick={handleGameStart}>Continue</button>
           {errorMessage && <p style={ { color: "red" } }>Insufficient grid size!</p>}
         </div> :
-        <Snake grid={initialGrid} head={initialSnakeHead} path={initialSnakePath} food={initialFood} gridWidth={Number.parseInt(gridWidth) + 2} gridHeight={Number.parseInt(gridHeight) + 2}/>}
+        <Snake grid={initialGrid}
+               head={initialSnakeHead}
+               path={initialSnakePath}
+               food={initialFood}
+               gridWidth={Number.parseInt(gridWidth) + 2}
+               gridHeight={Number.parseInt(gridHeight) + 2}
+               gameRestart={setGameStart}/>}
     </div>
   );
 }
