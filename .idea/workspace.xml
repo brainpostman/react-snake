@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eb1ccea-f26c-4f9d-ade6-736e52d86a1f" name="Changes" comment="Initial commit">
+    <list default="true" id="7eb1ccea-f26c-4f9d-ade6-736e52d86a1f" name="Changes" comment="Added restart and box-shadows">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +26,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Kr4exSx5GThZosZq7EQ09lFJbG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -78,7 +76,7 @@
       <workItem from="1674993190657" duration="16388000" />
       <workItem from="1675039451077" duration="439000" />
       <workItem from="1675087772036" duration="17004000" />
-      <workItem from="1675120219501" duration="2060000" />
+      <workItem from="1675120219501" duration="2381000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1675109581947</created>
@@ -87,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675109581948</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added restart and box-shadows">
+      <created>1675122493589</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675122493589</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +111,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Added restart and box-shadows" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added restart and box-shadows" />
   </component>
 </project>
