@@ -1,6 +1,6 @@
 html, body {
   box-sizing: border-box;
-  background-color: lightslategray;
+  background: linear-gradient(to bottom right, cadetblue, lightslategrey);
 }
 
 body {
@@ -8,10 +8,10 @@ body {
   padding: 0;
   font-family: sans-serif;
   font-weight: bold;
-  color: #554994;
+  color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: calc(100vh - 20px);
+  height: 100vh;
   width: 100vw;
 }
 

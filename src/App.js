@@ -3,9 +3,8 @@ import Snake from "./Snake.js";
 import "./App.css";
 
 function App() {
-  const [errorMessage, setErrorMessage] = useState(false);
-  const [gridWidth, setGridWidth] = useState("30");
-  const [gridHeight, setGridHeight] = useState("30");
+  const [gridWidth, setGridWidth] = useState("15");
+  const [gridHeight, setGridHeight] = useState("15");
   const [gameStart, setGameStart] = useState(false);
   const [initialSnakeHead, setInitialSnakeHead] = useState(null);
   const [initialSnakePath, setInitialSnakePath] = useState(null);
@@ -17,9 +16,7 @@ function App() {
   const handleGameStart = () => {
     const width = Number.parseInt(gridWidth);
     const height = Number.parseInt(gridHeight);
-    if (width < 12 || height < 9) {
-      setErrorMessage(true);
-      errorRef.current = setTimeout(() => setErrorMessage(false), 1000);
+    if (width < 12 || height < 9 || width > 30 || height > 30) {
       return;
     }
     clearTimeout(errorRef.current);
@@ -88,13 +85,12 @@ function App() {
     <div className="App">
       {!gameStart ?
         <div className="menu">
-          <p>Enter grid size (at least 12*9):</p>
+          <p>Enter grid size (between 12x9 and 30x30):</p>
           <p>Width:</p>
           <input type="number" value={gridWidth} onChange={handleWidthChange}/>
           <p>Height:</p>
           <input type="number" value={gridHeight} onChange={handleHeightChange}/>
           <button onClick={handleGameStart}>Continue</button>
-          {errorMessage && <p style={ { color: "red" } }>Insufficient grid size!</p>}
         </div> :
         <Snake grid={initialGrid}
                head={initialSnakeHead}

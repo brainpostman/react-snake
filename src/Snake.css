@@ -2,9 +2,9 @@
     position: absolute;
     left: 1200px;
     top: 200px;
-    border: 2px solid lightcoral;
-    border-radius: 4px;
-    background-color: lightblue;
+    border: none;
+    background: linear-gradient(to top left, cadetblue, lightslategrey) ;
+    box-shadow: 0 0 5px 2px black;
     width: 100px;
     text-align: center;
 }
@@ -52,7 +52,7 @@
 }
 
 .food {
-    animation: color_change 4s infinite;
+    animation: color_change 10s infinite;
 }
 
 @keyframes color_change {
