@@ -13,6 +13,7 @@ export default function Snake(props) {
     const [snakeHead, setSnakeHead] = useState(props.head.slice());
     const [snakePath, setSnakePath] = useState(deepCopy(props.path));
     const [keyPress, setKeyPress] = useState("keyUp");
+    const [snakeDirection, setSnakeDirection] = useState("up")
     const [food, setFood] = useState(props.food.slice());
     const [start, setStart] = useState(false);
     const [loss, setLoss] = useState(false);
@@ -48,11 +49,13 @@ export default function Snake(props) {
     useEffect(() => {
         checkSnakeContact(snakeHead, snakePath);
         checkWallContact(snakeHead);
+        let newDirection = chooseDirection(snakeDirection, keyPress);
         let newState = null;
         if (!loss && start) {
-            newState = generateNextState(gridState, snakeHead, snakePath, keyPress, food);
+            newState = generateNextState(gridState, snakeHead, snakePath, newDirection, food);
         }
         timeoutRef.current = setTimeout(() => {
+            setSnakeDirection(newDirection);
             setSnakeHead(newState.newHead);
             setSnakePath(newState.newPath);
             setFood(newState.newFood);
@@ -64,27 +67,27 @@ export default function Snake(props) {
         }
     }, [gridState, start]);
 
-    const generateNextState = (prevGrid, prevHead, prevPath, snakeDirection, prevFood) => {
+    const generateNextState = (prevGrid, prevHead, prevPath, direction, prevFood) => {
         const grid = deepCopy(prevGrid);
         const head = prevHead.slice();
         const path = deepCopy(prevPath);
         const food = prevFood.slice();
         const foodEaten = handleEatFood(head, food);
         let newHead;
-        switch (snakeDirection) {
-            case "keyUp": {
+        switch (direction) {
+            case "up": {
                 newHead = [head[0] - 1, head[1]];
                 break;
             }
-            case "keyDown": {
+            case "down": {
                 newHead = [head[0] + 1, head[1]];
                 break;
             }
-            case "keyLeft": {
+            case "left": {
                 newHead = [head[0], head[1] - 1];
                 break;
             }
-            case "keyRight": {
+            case "right": {
                 newHead = [head[0], head[1] + 1];
                 break;
             }
@@ -117,6 +120,45 @@ export default function Snake(props) {
             grid,
             newFood
         }
+    }
+
+    const chooseDirection = (prevDirection, arrow) => {
+        let newDirection;
+        switch(arrow) {
+            case "keyUp": {
+                if (prevDirection !== "down") {
+                   newDirection = "up";
+                } else {
+                    newDirection = "down";
+                }
+                break;
+            }
+            case "keyDown": {
+                if (prevDirection !== "up") {
+                    newDirection = "down";
+                } else {
+                    newDirection = "up"
+                }
+                break;
+            }
+            case "keyLeft": {
+                if (prevDirection !== "right") {
+                    newDirection = "left";
+                } else {
+                    newDirection = "right";
+                }
+                break;
+            }
+            case "keyRight": {
+                if (prevDirection !== "left") {
+                    newDirection = "right";
+                } else {
+                    newDirection = "left"
+                }
+                break;
+            }
+        }
+        return newDirection;
     }
 
     const handleEatFood = (head, food) => {
